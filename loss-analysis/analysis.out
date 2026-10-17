@@ -1,0 +1,135 @@
+================================================================================
+Twin-GaN  PCB copper loss / temperature analysis
+================================================================================
+Scenario : 54 V in, 20 A DC total, 10 A per channel, 25 C ambient, 10 min continuous
+Stackup  : 1 oz (35 um) F.Cu/B.Cu, 0.5 oz (17.5 um) In1.Cu/In2.Cu
+Copper   : F/B sheet R = 0.491 mOhm/sq, In1/In2 = 0.983 mOhm/sq, 0.3 mm via = 1.115 mOhm
+Phase    : 9.43 A rms per leg (I_dc/(1.0607*m*cosphi), m=1, cosphi=1)
+
+Thermal model: 106267 nodes, 271645 edges (Counter({'zone': 200131, 'vertical': 67900, 'via': 3300, 'track': 308, 'shunt': 6}))
+  iteration 1: copper dissipation   3242.2 mW, Tmax   83.9 C, board avg  35.6 C
+  iteration 2: copper dissipation   3513.5 mW, Tmax   89.9 C, board avg  36.5 C
+  iteration 3: copper dissipation   3533.8 mW, Tmax   90.4 C, board avg  36.5 C
+
+--------------------------------------------------------------------------------
+DISSIPATION BY BLOCK
+--------------------------------------------------------------------------------
+  block            P(mW)  R_eff(mOhm)   Tmax(C)
+  Vdrive          907.84        2.270      45.8
+  GND             194.41        0.486      54.5
+  Phase ch1-U     413.02        4.645      79.1
+  Phase ch1-V     438.88        4.935      90.4
+  Phase ch1-W     381.61        4.291      81.1
+  Phase ch2-U     406.20        4.568      77.8
+  Phase ch2-V     420.70        4.731      83.1
+  Phase ch2-W     371.13        4.174      73.4
+  -------------------------------------------
+  PCB copper      2463.6   <- what the copper itself burns
+  Shunts          1070.2   <- component loss, not PCB copper
+  TOTAL           3533.8
+
+--------------------------------------------------------------------------------
+TEMPERATURE
+--------------------------------------------------------------------------------
+  Copper temperature range : 25.0 .. 90.4 C
+  Board-wide average       : 36.5 C  (rise 11.5 K)
+
+HOTTEST DISCRETE TRACES
+     T(C)  dT(K)    P(mW)   I(A)  w(mm)  layer   detail
+     90.4   65.4   75.887   9.43   2.00  F.Cu    Phase ch1-V (133.38,140.90)->(136.10,140.90)
+     87.9   62.9    0.000   0.00   0.25  F.Cu    Phase ch1-V (132.05,140.80)->(133.25,140.80)
+     85.0   60.0    0.201   0.33   0.25  F.Cu    Phase ch1-V (131.12,140.85)->(130.38,140.85)
+     83.1   58.1   74.826   9.43   2.00  F.Cu    Phase ch2-V (133.24,77.71)->(135.99,77.71)
+     81.1   56.1   69.215   9.43   2.00  F.Cu    Phase ch1-W (133.26,144.12)->(135.82,144.12)
+     80.5   55.5    0.000   0.00   0.25  F.Cu    Phase ch2-V (132.03,77.70)->(133.23,77.70)
+     79.1   54.1   69.209   9.43   2.00  F.Cu    Phase ch1-U (133.53,137.40)->(136.10,137.40)
+     79.0   54.0    0.000   0.00   0.25  F.Cu    Phase ch1-W (132.31,144.12)->(133.26,144.12)
+     77.8   52.8   70.939   9.43   2.00  F.Cu    Phase ch2-U (133.40,74.40)->(136.05,74.40)
+     77.6   52.6    0.136   0.27   0.25  F.Cu    Phase ch2-V (131.10,77.75)->(130.35,77.75)
+
+HOTTEST COPPER POUR REGIONS
+     T(C)  dT(K)    P(mW)   I(A)  w(mm)  layer   detail
+     85.0   60.0    0.196   0.56   0.50  F.Cu    Phase ch1-V pour cell (130.5,140.0)
+     85.0   60.0    0.166   0.52   0.50  F.Cu    Phase ch1-V pour cell (130.5,141.0)
+     85.0   60.0    0.168   0.52   0.50  F.Cu    Phase ch1-V pour cell (130.5,141.0)
+     85.0   60.0    0.295   0.69   0.50  F.Cu    Phase ch1-V pour cell (130.5,139.5)
+     85.0   60.0    0.602   0.99   0.50  F.Cu    Phase ch1-V pour cell (130.5,140.5)
+     85.0   60.0    0.367   0.77   0.50  F.Cu    Phase ch1-V pour cell (130.0,141.0)
+     85.0   60.0    0.682   1.05   0.50  F.Cu    Phase ch1-V pour cell (130.0,139.5)
+     85.0   60.0    0.972   1.26   0.50  F.Cu    Phase ch1-V pour cell (129.5,140.5)
+     85.0   60.0    1.398   1.51   0.50  F.Cu    Phase ch1-V pour cell (129.5,140.0)
+     85.0   60.0    0.931   1.23   0.50  F.Cu    Phase ch1-V pour cell (129.5,141.0)
+
+HOTTEST VIAS
+     T(C)  dT(K)    P(mW)   I(A)  w(mm)  layer   detail
+     49.5   24.5    0.000   0.00   0.94  In1.Cu  GND 0.3 mm via @(114.70,145.32)
+     49.5   24.5    0.000   0.02   0.94  In2.Cu  GND 0.3 mm via @(114.70,145.32)
+     49.3   24.3    0.000   0.00   0.94  F.Cu    GND 0.3 mm via @(114.70,145.32)
+     48.8   23.8    0.000   0.00   0.94  In1.Cu  GND 0.3 mm via @(147.34,58.63)
+     48.8   23.8    0.000   0.00   0.94  In2.Cu  GND 0.3 mm via @(147.34,58.63)
+     48.2   23.2    0.000   0.00   0.94  F.Cu    GND 0.3 mm via @(147.34,58.63)
+     48.1   23.1    0.000   0.01   0.94  In1.Cu  GND 0.3 mm via @(114.15,137.03)
+     48.1   23.1    0.001   0.08   0.94  In2.Cu  GND 0.3 mm via @(114.15,137.03)
+     47.8   22.8    0.000   0.01   0.94  F.Cu    GND 0.3 mm via @(114.15,137.03)
+     45.2   20.2    0.244   1.50   0.94  F.Cu    Vdrive 0.3 mm via @(117.25,58.50)
+
+SHUNTS (component, not PCB copper)
+     T(C)  dT(K)    P(mW)   I(A)  w(mm)  layer   detail
+     87.9   62.9  178.450   9.43   0.00  -       Phase ch1-V shunt R98 (2 mOhm)
+     80.5   55.5  178.385   9.43   0.00  -       Phase ch2-V shunt R101 (2 mOhm)
+     79.0   54.0  178.371   9.43   0.00  -       Phase ch1-W shunt R99 (2 mOhm)
+     76.9   51.9  178.353   9.43   0.00  -       Phase ch1-U shunt R97 (2 mOhm)
+     75.5   50.5  178.340   9.43   0.00  -       Phase ch2-U shunt R100 (2 mOhm)
+     71.3   46.3  178.304   9.43   0.00  -       Phase ch2-W shunt R102 (2 mOhm)
+
+HIGHEST DISSIPATION ANYWHERE IN COPPER
+     T(C)  dT(K)    P(mW)   I(A)  w(mm)  layer   detail
+     90.4   65.4   75.887   9.43   2.00  F.Cu    Phase ch1-V (133.38,140.90)->(136.10,140.90)
+     87.9   62.9    0.000   0.00   0.25  F.Cu    Phase ch1-V (132.05,140.80)->(133.25,140.80)
+     85.0   60.0    0.196   0.56   0.50  F.Cu    Phase ch1-V pour cell (130.5,140.0)
+     85.0   60.0    0.166   0.52   0.50  F.Cu    Phase ch1-V pour cell (130.5,141.0)
+     85.0   60.0    0.168   0.52   0.50  F.Cu    Phase ch1-V pour cell (130.5,141.0)
+     85.0   60.0    0.295   0.69   0.50  F.Cu    Phase ch1-V pour cell (130.5,139.5)
+     85.0   60.0    0.602   0.99   0.50  F.Cu    Phase ch1-V pour cell (130.5,140.5)
+     85.0   60.0    0.367   0.77   0.50  F.Cu    Phase ch1-V pour cell (130.0,141.0)
+     85.0   60.0    0.682   1.05   0.50  F.Cu    Phase ch1-V pour cell (130.0,139.5)
+     85.0   60.0    0.972   1.26   0.50  F.Cu    Phase ch1-V pour cell (129.5,140.5)
+     85.0   60.0    1.398   1.51   0.50  F.Cu    Phase ch1-V pour cell (129.5,140.0)
+     85.0   60.0    0.931   1.23   0.50  F.Cu    Phase ch1-V pour cell (129.5,141.0)
+
+--------------------------------------------------------------------------------
+IPC CROSS-CHECK ON THE 2.0 mm PHASE TRACES
+--------------------------------------------------------------------------------
+  trace                                I(A) thermal-net  IPC-2152  IPC-2221
+  Phase ch1-U F.Cu w=2.00              9.43        79.1      91.7      72.1
+  Phase ch1-V F.Cu w=2.00              9.43        90.4      91.7      72.1
+  Phase ch1-W F.Cu w=2.00              9.43        81.1      91.7      72.1
+  Phase ch2-U F.Cu w=2.00              9.43        77.8      91.7      72.1
+  Phase ch2-V F.Cu w=2.00              9.43        83.1      91.7      72.1
+  Phase ch2-W F.Cu w=2.00              9.43        73.4      91.7      72.1
+
+--------------------------------------------------------------------------------
+SENSITIVITY: PHASE CURRENT (DC input held at 20 A total)
+--------------------------------------------------------------------------------
+  A 10 A DC channel only forces 9.43 A rms/phase at FULL modulation.
+  At part throttle the phase current rises as 1/m, so this is the
+  optimistic end of the operating envelope.
+
+   I_phase(A)  equiv m  phase copper(mW)  2.0mm trace T(C)
+         9.43     1.00              1361              90.4 (solved)
+        12.00     0.79              2403             140.4
+        15.00     0.63              3754             205.3
+        20.00     0.47              6675             345.6
+
+  IPC-2152 (KiCad's own formula) on a 2.0 mm x 1 oz external trace says
+     9.43 A -> dT =   91.7 K  (T =  116.7 C)
+    12.00 A -> dT =  148.4 K  (T =  173.4 C)
+    15.00 A -> dT =  231.9 K  (T =  256.9 C)
+    20.00 A -> dT =  412.3 K  (T =  437.3 C)
+
+--------------------------------------------------------------------------------
+10-MINUTE SOAK
+--------------------------------------------------------------------------------
+  Bare FR4 thermal time constant ~ 95 s (1.6 min)
+  10 min = 6.3 time constants -> 99.8 % of final rise
+EXIT=0

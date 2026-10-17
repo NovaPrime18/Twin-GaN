@@ -5,11 +5,9 @@
 [![License: CERN-OHL-S v2.0](https://img.shields.io/badge/License-CERN--OHL--S%20v2.0-blue.svg)](https://ohwr.org/cern_ohl_s_v2.txt)
 [![KiCad](https://img.shields.io/badge/Made%20with-KiCad-blue)](https://www.kicad.org/)
 
-<table><tr>
-<td><img src="https://raw.githubusercontent.com/NovaPrime18/Twin-GaN/main/Pics/twin-gan-f-n.png" width="100%"></td>
-<td><img src="https://raw.githubusercontent.com/NovaPrime18/Twin-GaN/main/Pics/twin-gan-b.png" width="100%"></td>
-</tr></table>
-<img src="https://raw.githubusercontent.com/NovaPrime18/Twin-GaN/main/Pics/twin-gan-f.jpg" width="100%">
+
+<img src="https://raw.githubusercontent.com/NovaPrime18/Twin-GaN/main/Twin-GaN.png" width="100%">
+
 
 ---
 

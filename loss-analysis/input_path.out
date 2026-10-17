@@ -1,0 +1,26 @@
+thermal model: 106405 nodes, 272026 edges
+source J3.2 node 1, sink F1.1 node 7, nodes=138, edges=256
+kinds: Counter({'zone': 256})
+  iter 1: P=  311.55 mW  R= 0.7789 mOhm  Tmax=  44.3 C
+  iter 2: P=  340.32 mW  R= 0.8508 mOhm  Tmax=  45.4 C
+  iter 3: P=  341.62 mW  R= 0.8540 mOhm  Tmax=  45.5 C
+
+XT60 -> fuse pour: 341.6 mW at 20 A, R = 0.854 mOhm
+  peak node temperature 45.5 C
+
+     T(C)    P(mW)   I(A)  w(mm)  layer   detail
+     45.5    3.297   2.47   0.50  F.Cu    pour cell (69.5,98.5)
+     45.5    4.088   2.75   0.50  F.Cu    pour cell (70.0,98.0)
+     45.5    3.557   2.57   0.50  F.Cu    pour cell (70.0,98.5)
+     45.5    3.809   2.65   0.50  F.Cu    pour cell (70.0,98.5)
+     45.4    3.834   2.66   0.50  F.Cu    pour cell (69.5,98.5)
+     45.4    2.937   2.33   0.50  F.Cu    pour cell (69.0,99.0)
+     45.4    3.274   2.46   0.50  F.Cu    pour cell (69.5,99.0)
+     45.4    3.469   2.53   0.50  F.Cu    pour cell (69.5,99.0)
+     45.4    2.977   2.35   0.50  F.Cu    pour cell (68.5,99.5)
+     45.4    2.977   2.35   0.50  F.Cu    pour cell (68.5,100.0)
+     45.4    3.523   2.55   0.50  F.Cu    pour cell (70.0,99.0)
+     45.4    3.549   2.56   0.50  F.Cu    pour cell (70.0,99.0)
+
+power by kind: {'zone': '341.6 mW'}
+EXIT=0
